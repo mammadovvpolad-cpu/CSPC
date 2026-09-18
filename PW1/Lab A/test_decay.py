@@ -15,13 +15,19 @@ def test_starts_at_N0():
     # at time zero, no atoms have decayed yet
     assert simulate(1000, 0.4)[0] == 1000
 
+def test_reject_negative_rates():
+    with pytest.raises(ValueError):
+        simulate(1000, -0.4)
 
-# TODO 1: test_rejects_negative_rate
-#   Check that calling simulate(...) with a negative lam raises a ValueError.
-#   Which pytest tool checks that an error is raised?
+def test_matches_law():
+    N0 = 1000
+    lam = 0.4
+    dt = 0.05
+    steps = 200
+    t = steps * dt
 
+    finals = [simulate(N0, lam, seed=i)[-1] for i in range(200)] #runs 200 times, each time grab final atom count
+    average = np.mean(finals) #finds the average of atom counts
 
-# TODO 2: test_matches_law
-#   Check that the simulation's AVERAGE over many seeds is close to the
-#   physical law  N0 * exp(-lam * t).
-#   Which pytest tool compares floating-point values with a tolerance?
+    expected = N0 * np.exp(-lam * t)
+    assert average == pytest.approx(expected, rel=0.05) #relative difference
