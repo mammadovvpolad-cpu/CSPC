@@ -51,3 +51,20 @@ conda activate cspc
 
     One problem I had was installing snakemake with conda, since it was not found in the conda-forge channel on its own. I fixed it by installing matplotlib with conda and snakemake with pip instead.
 
+## PW2 --- Lab A
+
+**Mean acceleration:**
+-8.58 m/s² (std 28.7 m/s²). This is consistent with -9.81 m/s²
+within the sampling uncertainty, because the noise is so large.
+
+**Why the acceleration is noisy:**
+each derivative divides the small difference between
+neighbouring noisy measurements by the tiny time step (0.1 s), which amplifies the noise,
+and I did this twice, while the position itself was never differentiated.
+
+**Integrating back:**
+integrating the noisy acceleration twice recovered the position to
+within 0.78 m of the original. Integration sums many values, so the random noise largely
+cancels. Differentiation amplifies noise; integration suppresses it.
+
+![Motion](PW2/Lab%20A/motion.png)
