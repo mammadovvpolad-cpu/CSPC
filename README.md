@@ -68,3 +68,7 @@ within 0.78 m of the original. Integration sums many values, so the random noise
 cancels. Differentiation amplifies noise; integration suppresses it.
 
 ![Motion](PW2/Lab%20A/motion.png)
+
+**Bonus (2D trajectory):** I differentiated x and y separately with `np.gradient` and
+combined them into the speed sqrt(vx² + vy²). The path is smooth, but the speed is noisy
+because it comes from a derivative of noisy positions.
