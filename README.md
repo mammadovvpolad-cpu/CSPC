@@ -109,3 +109,5 @@ because it comes from a derivative of noisy positions.
     In this PW i learned that optimization appears all over chemistry: fitting a rate constant, solving for an equilibrium, and finding a titration's equivalence point. I learned that on a simple convex function every method works, but on a complicated one the starting point and the algorithm matter, and that Newton's method can land on a maximum, so I have to check the sign of the second derivative. I also saw that the same equilibrium can be found by root-finding (Newton) or by minimizing the squared imbalance (SLSQP).
 
     One problem I had was with equilibrium.py: the return line of my function was not indented, which gave an IndentationError, and I fixed it by indenting it. I also first ran the scripts from the wrong folder, and I fixed it by moving into PW2/Lab B before running them.
+
+    
